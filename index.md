@@ -1,6 +1,6 @@
 # Privacy Policy for Pocketly
 
-**Last updated: September 9, 2026**
+**Last updated: November 11, 2026**
 
 Pocketly ("Pocketly", "we", "our", or "the app") is a personal finance tracking application designed with an offline-first approach. This Privacy Policy explains what data Pocketly handles, how it is stored, and what control you have over your data.
 
@@ -8,39 +8,50 @@ Pocketly ("Pocketly", "we", "our", or "the app") is a personal finance tracking 
 
 ### Local Storage Only
 
-Pocketly is designed to operate locally on your device. Your financial information, including transactions, income, expenses, budgets, categories, and account settings, is stored on your device using an on-device SQLite database and Android Preferences DataStore.
+Pocketly is designed to operate locally on your device. Your financial information, including transactions, income, expenses, investments, budgets, categories, staged SMS review entries, learned merchant category rules, and app settings, is stored strictly on your device using an on-device SQLite database (Room) and Android Preferences DataStore.
 
 ### No Cloud Storage or User Accounts
 
 Pocketly does not require you to create an account and does not maintain a cloud database or user account system.
 
-Your financial records are not uploaded to Pocketly's servers or synchronized to a Pocketly cloud service.
+Your financial records and SMS data are never uploaded to Pocketly's servers or synchronized to a Pocketly cloud service.
 
-### No Analytics or Advertising Tracking
+### No Analytics, Ad Tracking, or Data Selling
 
 Pocketly does not use third-party advertising SDKs, behavioral analytics SDKs, tracking pixels, or marketing trackers to monitor your activity within the app.
 
-We do not track what you spend money on or build advertising profiles based on your financial activity.
+We never sell, rent, share, or transfer your financial activity or SMS data to advertisers, data brokers, or third parties.
 
 ## 2. Internet and Third-Party Services
 
-Pocketly's core financial tracking functionality is designed to work without an Internet connection.
+Pocketly's core financial tracking and on-device SMS parsing functionality work completely offline without requiring an Internet connection.
 
-Pocketly does not transmit your financial records to a Pocketly-operated remote server.
+Pocketly does not transmit your financial records or text messages to a Pocketly-operated or third-party remote server.
 
 If a future version of Pocketly introduces an online or third-party service that processes personal data, this Privacy Policy will be updated before or when that functionality is introduced, as applicable.
 
 ## 3. Permissions and Device Access
 
-Pocketly requests only permissions needed to provide specific local features.
+Pocketly requests only permissions needed to provide specific local features. Optional permissions require explicit user consent and are preceded by an in-app disclosure explaining how they are used.
+
+### SMS Messages (Optional — SMS-Based Money Management)
+
+**READ_SMS and RECEIVE_SMS:**
+
+When you explicitly opt in to **Auto-Read SMS** or run **Scan Current Month Now** in Settings, Pocketly requests `READ_SMS` and `RECEIVE_SMS` permissions after presenting an in-app **"On-Device SMS Detection"** disclosure dialog.
+
+- **Purpose:** Strictly used as an on-device personal money management feature to detect financial transaction alerts (such as bank, card, or payment debit/credit messages) and stage them for your review before logging them into your ledger.
+- **Scope & Filtering:** Initial inbox scanning reads only messages from day 1 of the current calendar month onward. Non-transactional SMS—including OTPs, PINs, CVVs, promotional messages, and failed alerts—are ignored in memory and never stored.
+- **User Control & Retention:** Recognized transactions are staged locally in the **Pending** queue in **SMS Inbox** until you review, edit, approve, or ignore them. Once a staged item is approved or ignored, the raw SMS message body is cleared (`null`) from local database storage. User-learned merchant-to-category mappings are stored locally to improve future categorization and can be edited or deleted anytime in **SMS Inbox → Learned Rules**.
+- **Strict Limited Use:** All SMS parsing runs 100% locally on your device. Zero SMS content leaves your device or is used for advertising, profiling, or non-core purposes.
 
 ### Notifications
 
 **POST_NOTIFICATIONS (Android 13 and later):**
 
-Used to provide local notifications, such as daily expense reminders, when you enable those reminders.
+Used to provide local notifications when enabled by you, including daily expense logging reminders and optional alerts when a new transactional SMS is staged in your Inbox queue for review.
 
-Notifications can be disabled through the app or your Android device settings.
+Notifications can be disabled anytime through Pocketly Settings or your Android device settings.
 
 ### Device Reboot
 
@@ -48,45 +59,43 @@ Notifications can be disabled through the app or your Android device settings.
 
 Used to restore locally scheduled expense reminder alarms after your device restarts.
 
-This permission does not give Pocketly access to your financial records outside the app's local storage.
+This permission does not give Pocketly access to your financial records or SMS outside the app's local storage.
 
 ### File Import and Export
 
-When you explicitly choose to export or import your data, Pocketly uses Android's system file picker to allow you to select a file.
+When you explicitly choose to export, import, or create a backup of your data, Pocketly uses Android's system file picker to allow you to select a file.
 
-Pocketly accesses only the files that you explicitly select for import or export.
-
-You can export your financial data in supported formats such as CSV or JSON for your own backup or portability purposes.
+Pocketly accesses only the files that you explicitly select for import, export, or backup restore.
 
 ## 4. Data Export and Portability
 
 Pocketly gives you control over your financial data.
 
-Through the **Data & Support** section in Settings, you can export supported financial data, including transactions, categories, and budgets, in CSV or JSON format.
+Through the **Data & Support** section in Settings, you can export supported financial data in CSV or JSON format, or generate full local backup snapshots (including transactions, categories, budgets, staged SMS entries, and learned merchant rules).
 
-Exported files are stored in the location you choose. Once exported, those files are under your control, including if you choose to store them on a personal cloud storage service or other storage location.
+Exported and backup files are stored in the location you choose. Once exported, those files are under your control, including if you choose to store them on a personal cloud storage service or other storage location.
 
 Pocketly does not control or have access to copies of files that you independently store outside the app.
 
 ## 5. Data Retention and Deletion
 
-Because Pocketly stores financial data locally on your device, the data remains there until you remove it or the app's data is otherwise cleared.
+Because Pocketly stores financial data locally on your device, the data remains there until you remove it or clear the app's data.
 
-### Delete Account & Reset Data
+### Delete Account & Data
 
-Pocketly provides a **Delete Account & Reset Data** option in Settings. Because Pocketly does not maintain a cloud account, this function deletes the locally stored Pocketly data and resets the app on your device.
+Pocketly provides a **Delete Account & Data** option in Settings. Because Pocketly does not maintain a cloud account, this function permanently deletes all locally stored Pocketly data (transactions, budgets, categories, staged SMS items, learned merchant rules, and preferences) and resets the app on your device.
 
-This action is intended to permanently remove the Pocketly data stored locally by the app. You should export any data you want to keep before using this option.
+You should export any data you want to keep before using this option.
 
 ### Uninstalling the App
 
-Uninstalling Pocketly generally removes the app's locally stored application data from your device in accordance with Android's app-data handling. Any exported files or backups that you previously saved outside the app are not automatically deleted by Pocketly.
+Uninstalling Pocketly removes the app's locally stored application database and preferences from your device in accordance with Android's app-data handling. Any exported CSV/JSON files or backups that you previously saved outside the app are not automatically deleted by Pocketly.
 
 ## 6. Security
 
-Pocketly's offline-first design means that your financial records are kept locally on your device rather than being transmitted to a Pocketly cloud service.
+Pocketly's offline-first architecture ensures your financial records and parsed SMS alerts remain strictly on your device rather than being transmitted to remote servers.
 
-You are responsible for maintaining the security of your device, including using appropriate device-level security such as a screen lock, encryption, or other security features provided by your device.
+You are responsible for maintaining the security of your device, including using appropriate device-level protections such as a screen lock, OS updates, or device encryption.
 
 No method of electronic storage can be guaranteed to be completely secure.
 
